@@ -16,51 +16,67 @@
     <div class="container mt-5 px-4">
       <div class="row pt-5 justify-content-md-center">
         <div class="col-6 bg-light">
-            <div class="mb-3">
-  <label for="basic-url" class="form-label">Bill</label>
-  <div class="input-group">
-    <span class="input-group-text" id="basic-addon3">&#8377;</span>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-  </div>
-</div>
+            <form onsubmit="handlesubmit">
+          <div class="mb-3">
+            <label for="basic-url" class="form-label">Bill</label>
+            <div class="input-group">
+              <span class="input-group-text" id="basic-addon3">&#8377;</span>
+              <input
+                type="number"
+                class="form-control"
+                id="bill"
+                aria-describedby="basic-addon3 basic-addon4"
+              />
+            </div>
+          </div>
 
- <div class="mb-3">
-  <label for="basic-url" class="form-label">Enter Tip</label>
-  <div class="input-group">
-   
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-   <span class="input-group-text" id="basic-addon3">%</span>
-</div>
-</div>
+          <div class="mb-3">
+            <label for="basic-url" class="form-label">Enter Tip</label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                id="tip"
+                aria-describedby="basic-addon3 basic-addon4"
+              />
+              <span class="input-group-text" id="basic-addon3">%</span>
+            </div>
+          </div>
 
-<div class="mb-3">
-  <label for="basic-url" class="form-label">Number of People</label>
-  <div class="input-group">
-   
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4">
-   <span class="input-group-text" id="basic-addon3">Persons</span>
-</div>
-</div>
-<div class="d-grid ">
-  <button class="btn btn-warning" type="button">Button</button>
- 
-</div>
+          <div class="mb-3">
+            <label for="basic-url" class="form-label">Number of People</label>
+            <div class="input-group">
+              <input
+                type="number"
+                class="form-control"
+                id="person"
+                aria-describedby="basic-addon3 basic-addon4"
+              
+              />
+              <span class="input-group-text" id="basic-addon3">Persons</span>
+            </div>
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-warning" onclick="calculate">Button</button>
+          </div>
+            </form>
         </div>
+        
         <div class="col-5 bg-light">
           <div class="card">
             <div class="item">
               <span>Tip Amount</span>
-              <span id="tip">$100</span>
+              <span id="tips"></span>
             </div>
 
             <div class="item">
               <span>Total</span>
-              <span id="total">$1000</span>
+              <span id="total"></span>
             </div>
 
             <div class="item">
               <span>Each Person Bill</span>
-              <span id="personbill">$10</span>
+              <span id="personbill"></span>
             </div>
           </div>
         </div>
@@ -71,5 +87,30 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
+    <script>
+        const bill=document.getElementById('bill')
+        const person=document.getElementById('person')
+        const tip=document.getElementById('tip')
+
+        bill.addEventListener('input',calculate)
+        person.addEventListener('input',calculate)
+        tip.addEventListener('input',calculate)
+
+        function calculate(){
+            const billValue=Number(bill.value)
+             const personValue=Number(person.value)
+              const tipValue=Number(tip.value)
+
+              if (!billValue || !personValue) return;
+
+              const tipAmount=billValue*(tipValue/100)
+                const total = billValue + tipAmount;
+                const perPerson = total / personValue;
+
+                  document.getElementById("tips").textContent = "₹" + tipAmount.toFixed(2);
+  document.getElementById("total").textContent = "₹" + total.toFixed(2);
+  document.getElementById("personbill").textContent = "₹" + perPerson.toFixed(2);
+        }
+    </script>
   </body>
 </html>

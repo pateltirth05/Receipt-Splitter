@@ -1,14 +1,66 @@
-.card {
-  width: 18rem;
-  height: 25rem;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+body {
+  background-color: #f8f9fa;
 }
 
+/* Card */
+.cardd {
+  width: 100%;
+  max-width: 350px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #3a1800, #6b2e00);
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Items (rows) */
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.item span:last-child {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Overview section */
+.overview {
+  background-color: #fbe3cc;
+  padding: 25px 15px;
+  border-radius: 15px;
+  border: 1px solid #3a1800;
+}
+
+/* Inputs spacing */
+.form-label {
+  font-weight: 600;
+}
+
+.input-group-text {
+  background-color: #fff;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .overview {
+    padding: 15px;
+  }
+
+  .cardd {
+    margin-top: 20px;
+  }
+
+  .item {
+    font-size: 14px;
+  }
+}
+#headings{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+    font-size: 40px;
 }
